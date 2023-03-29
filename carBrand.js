@@ -37,14 +37,25 @@ function searching(array, name) {
 }
 // const test = searching(carBrandList, "Genesis");
 
-function makeConstruct(order, name) {
-  this.order = order;
-  this.name = name;
-
-  function order(order){
-    if(typeof(order) === "number") {
-      return this._order;
+class FindCar {
+  constructor(company, vehicle) {
+    this.company = company;
+    this.vehicle = vehicle
+  }
+  set company(company) {
+    if(typeof(company) === "string") {
+      this._company = company;
     }
   }
-}
-const test = makeConstruct(5, carBrandList[5]);
+  set vehicle(vehicle) {
+    if(typeof(vehicle) === "string") {
+      this._vehicle = vehicle;
+    }
+  }
+  get company() {
+    return this._company;
+  }
+};
+
+let hyundaiSonata = new FindCar("Hyundai", "Sonata");
+console.log(hyundaiSonata.company);
